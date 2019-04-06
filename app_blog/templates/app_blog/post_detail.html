@@ -67,7 +67,7 @@
                 width="90" height="35" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
                 allowTransparency="true" allow="encrypted-media" class="facebook"></iframe>
         </div>
-        <div><a href="https://api.whatsapp.com/send?text=I love this post of title: '{{ post.title }}', You can also read via link: '{{ request.build_absolute_uri }}'" target="_blank" class="botao-wpp">
+        <div><a href="https://api.whatsapp.com/send?text=I love this post of title: '{{ post.title }}', You can also read via the link: {{ request.build_absolute_uri }}" target="_blank" class="botao-wpp">
                 <!-- ícone -->
                 <i class="fab fa-whatsapp"></i> whatsapp</a>
         </div>
