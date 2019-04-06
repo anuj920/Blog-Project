@@ -1,0 +1,77 @@
+{% extends 'app_blog/base.html' %}
+
+{% block content %}
+
+
+<h1 class='posttitle'>{{ post.title }}</h1>
+<p class='postcontent'>"{{ post.text|striptags }}"</p>
+<p class="author"><strong>Author:</strong> {{ post.author }}</p>
+{% if post.published_date %}
+<div class="date postdate">
+    <p><strong>Published on:</strong> {{ post.published_date }}</p>
+</div>
+{% else %}
+<a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+{% endif %}
+
+<p><a href="{% url 'like' pk=post.pk %}" class="btn btn-primary">Like: {{ post.total_likes }}</a></p>
+
+{% if user.is_authenticated and post.author == user %}
+<a class="btn btn-primary" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+<a class="btn btn-primary" href="{% url 'post_remove' pk=post.pk %}"><span
+        class="glyphicon glyphicon-remove"></span></a>
+{% endif %}
+
+<hr>
+
+<div class="container">
+    <div class="comment_detail">
+        <h4><strong>Comments:</strong></h4>
+        <ul>
+            {% for comment in post.comments.all %}
+            <li>
+                <div class="comment_content">
+                    <p><strong class="author">{{ comment.author }}</strong> {{ comment.text|striptags }}</p>
+                </div>
+                <strong>Comment at:</strong> {{ comment.create_date }}
+                {% if user.is_authenticated and post.author == user %}
+                <div class="comment_remove">
+                    <a href="{% url 'comment_remove' pk=comment.pk %}"><span
+                            class="glyphicon glyphicon-remove"></span></a>
+                    <!-- <a class="btn btn-success" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a> -->
+                </div>
+                {% endif %}
+            </li>
+            <br>
+            {% empty %}
+            <p>No comments posted.</p>
+            {% endfor %}
+        </ul>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="add_comment">
+        <a class="btn btn-primary" href="{% url 'add_comment' pk=post.pk %}">Add comment</a>
+    </div>
+    {% else %}
+    <div class="add_comment">
+        <a class="btn btn-primary" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+    </div>
+    {% endif %}
+
+
+    <hr>
+    <div class="share">
+        <div>
+            <iframe
+                src="https://www.facebook.com/plugins/share_button.php?href={{ request.build_absolute_uri }}&layout=button&size=large&width=90&height=35&appId"
+                width="90" height="35" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                allowTransparency="true" allow="encrypted-media" class="facebook"></iframe>
+        </div>
+        <div><a href="https://api.whatsapp.com/send?text=I love this post of title: '{{ post.title }}', You can also read via link: '{{ request.build_absolute_uri }}'" target="_blank" class="botao-wpp">
+                <!-- ícone -->
+                <i class="fab fa-whatsapp"></i> whatsapp</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'app_blog/base.html' %}
+
+{% block content %}
+<div class="centerstage">
+    {% if user.is_authenticated %}
+    <div class="user">
+        <span>Welcome </span> <span class="author">{{ user.username }}</span>
+    </div>
+    
+    <hr>
+
+    {% endif %}
+    {% for post in post_list %}
+    <div class="post">
+        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a><span class="author list_author"> ({{ post.author }})</span></h1>
+        <div class="date">
+            <p>Published on: {{ post.published_date }}</p>
+        </div>
+        <div class="like-comment">
+            <p>Likes: {{ post.total_likes }} | Comments: {{ post.approve_comments.count }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block extra %}
+<div class="center">
+    <p class="color">hello is new content</p>
+</div>
+
+
+{% endblock %}

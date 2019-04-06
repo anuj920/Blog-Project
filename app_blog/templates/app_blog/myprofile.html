@@ -1,0 +1,16 @@
+{% extends 'app_blog/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h4><strong>User Name:</strong> {{ user.get_username }}</h4>
+        <h4><strong>Name:</strong> {{ user.get_full_name }}</h4>
+        <h4><strong>Email:</strong> {{ user.email }}</h4>
+        <h4><strong>Last Login:</strong> {{ user.last_login }}</h4>
+        <br>
+        <h5>Want To Change the password,<strong><a href="{% url 'change_password' %}">Change Password</a></strong></h5>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+.user{
+  color:#1565C0;
+  font-size: 3.5em;
+  font-family: 'Signika', sans-serif;
+  letter-spacing: 3px;
+  font-weight: 550;
+}
+
+.techfont {
+  font-family: 'Russo One', sans-serif;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.bigbrand {
+  font-size: 2.5em;
+}
+
+.author {
+  text-transform: capitalize;
+}
+
+.list_author{
+  font-size: .35em;
+  font-weight: 700;
+  color: green;
+}
+
+.posttitle {
+  font-family: 'Russo One', sans-serif;
+  font-size: 2.5em;
+}
+
+.postcontent {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 1.2em;
+}
+
+.centerstage {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-comment {
+  position: absolute;
+  right: 0px;
+}
+
+.comment_remove {
+  display: inline;
+}
+
+.comment_content strong {
+  font-size: 1.2em;
+}
+
+.login {
+  background: grey;
+}
+.post h1{
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+
+.botao-wpp {
+  text-decoration: none;
+  color: #eee;
+  display: inline-block;
+  background-color: #25d366;
+  font-weight: bold;
+  padding: .6rem .6rem;
+  border-radius: 3px;
+}
+
+.botao-wpp:hover {
+  background-color: darken(#25d366, 5%);
+  text-decoration: none;
+  color: #eee;
+}
+
+.botao-wpp:focus {
+  background-color: darken(#25d366, 15%);
+  text-decoration: none;
+  color: #eee;
+}
+
+.extra{
+  height: 768px;
+  width: 100%;
+}
+.center{
+    float: right;
+}
+.color{
+  color: red;
+}

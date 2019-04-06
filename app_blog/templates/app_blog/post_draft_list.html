@@ -1,0 +1,16 @@
+{% extends 'app_blog/base.html' %}
+
+{% block content %}
+{% for post in post_list %}
+
+<div class="post">
+    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+    <p class="author"><strong>Author:</strong> {{ post.author }}</p>
+    <p class="date">Created: {{ post.created_date }}</p>
+    <p class="postcontent">{{ post.text|striptags }}</p>
+</div>
+
+{% empty %}
+<h3 class="jumbotron">Your Draft has No Post.</h3>
+{% endfor %}
+{% endblock %}
